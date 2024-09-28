@@ -119,7 +119,6 @@ export default {
 }
 
 .col {
-  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,18 +136,20 @@ export default {
   width: 100%;
   border-radius: 0 0 2rem 2rem;
   background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 2rem;
   padding-bottom: 1rem;
 }
 
 .type-3 {
   width: 95%;
   margin-left: 5%;
-  /* border-radius: 0 0 2rem 0; */
+  margin-top: 1rem;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .row {
   width: 100%;
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

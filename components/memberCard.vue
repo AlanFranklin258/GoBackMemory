@@ -89,7 +89,6 @@ export default {
 }
 
 .member-card {
-  margin-top: 2rem;
   border-radius: 0 0 0.8rem 0.8rem;
   transition: 0.2s;
   display: flex;

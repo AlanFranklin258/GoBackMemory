@@ -157,6 +157,11 @@ export default {
               path: '/member/fellow-9',
               label: '2023-2024',
               icon: 'bi bi-person-arms-up'
+            },
+            {
+              path: '/member/fellow-10',
+              label: '2024-2025',
+              icon: 'bi bi-person-raised-hand'
             }
           ]
         }
@@ -282,7 +287,7 @@ export default {
 
 .banners {
   width: 100%;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .banner-img {
