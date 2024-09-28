@@ -1,78 +1,66 @@
 <template>
-    <div class="layout">
-        <background></background>
-        <div class="header">
-            <img :src="logo" class="logo">
-            <div style="display: flex; flex-direction: column; align-items: start">
-                <div class="title">告白话剧社</div>
-                <div class="sub-title">GoBack Drama Club</div>
-            </div>
-        </div>
-        <el-menu
-            :default-active="activeIndex"
-            :router="true"
-            :unique-opened="true"
-            mode="horizontal"
-            background-color="rgba(0,83,117,0.1)"
-            class="nav-menu"
-            id="anchor"
-        >
-            <div v-for="(n, sub) in nav" :key="n.label">
-                <el-menu-item v-if="!nav[sub].hasOwnProperty('subNav')" :index="n.path">
-                    <template #title>
-                        <i :class="n.icon" class="text"></i>
-                        <span class="text">{{ n.label }}</span>
-                    </template>
-                </el-menu-item>
-                <el-sub-menu v-else :key="n.label" :index="sub" class="el-sub-menu">
-                    <template #title>
-                        <i :class="n.icon" class="text"></i>
-                        <span class="text">{{ n.label }}</span>
-                    </template>
-                    <el-menu-item v-for="sn in nav[sub].subNav" :key="sn.label" :index="sn.path">
-                        <template #title>
-                            <i :class="sn.icon" class="sub-text"></i>
-                            <span class="sub-text">{{ sn.label }}</span>
-                        </template>
-                    </el-menu-item>
-                </el-sub-menu>
-            </div>
-        </el-menu>
-        <div class="main-content">
-            <el-carousel
-                height="50vh"
-                trigger="click"
-                :interval="5000"
-                indicator-position="outside"
-                class="banners"
-            >
-                <el-carousel-item v-for="banner in banners" :key="banner" class="">
-                  <img :src="banner" alt="" class="banner-img goback-mark">
-                </el-carousel-item>
-            </el-carousel>
-            <slot id="page-anchor"/>
-        </div>
+  <div class="layout">
+    <background></background>
+    <div class="header">
+      <img :src="logo" class="logo">
+      <div style="display: flex; flex-direction: column; align-items: start">
+        <div class="title">告白话剧社</div>
+        <div class="sub-title">GoBack Drama Club</div>
+      </div>
     </div>
+    <el-menu :default-active="activeIndex" :router="true" :unique-opened="true" mode="horizontal"
+      background-color="rgba(0,83,117,0.1)" class="nav-menu" id="anchor"
+      :style="{ 'backgroundColor': dynamicBackground }">
+      <div v-for="(n, sub) in nav" :key="n.label">
+        <el-menu-item v-if="!nav[sub].hasOwnProperty('subNav')" :index="n.path">
+          <template #title>
+            <i :class="n.icon" class="text"></i>
+            <span class="text">{{ n.label }}</span>
+          </template>
+        </el-menu-item>
+        <el-sub-menu v-else :key="n.label" :index="sub" class="el-sub-menu">
+          <template #title>
+            <i :class="n.icon" class="text"></i>
+            <span class="text">{{ n.label }}</span>
+          </template>
+          <el-menu-item v-for="sn in nav[sub].subNav" :key="sn.label" :index="sn.path">
+            <template #title>
+              <i :class="sn.icon" class="sub-text"></i>
+              <span class="sub-text">{{ sn.label }}</span>
+            </template>
+          </el-menu-item>
+        </el-sub-menu>
+      </div>
+    </el-menu>
+    <div class="main-content">
+      <el-carousel height="50vh" trigger="click" :interval="5000" indicator-position="outside" class="banners">
+        <el-carousel-item v-for="banner in banners" :key="banner" class="">
+          <img :src="banner" alt="" class="banner-img goback-mark">
+        </el-carousel-item>
+      </el-carousel>
+      <slot id="page-anchor" />
+    </div>
+  </div>
 </template>
 
 <script>
 import backgroundVue from '~/components/background.vue'
 
 export default {
-  components: {backgroundVue},
-  data(){
-    return{
+  components: { backgroundVue },
+  data() {
+    return {
       activeIndex: '1',
-      nav:{
-        home:{
+      nav: {
+        home: {
           path: '/',
           label: '主页',
           icon: 'bi bi-house-fill'
         },
-        about:{
+        about: {
           label: '关于社团',
           icon: 'bi bi-info-circle-fill',
-          subNav:[
+          subNav: [
             {
               path: '/about/history',
               label: '发展沿革',
@@ -93,7 +81,7 @@ export default {
         activity: {
           label: '社团活动',
           icon: 'bi bi-activity',
-          subNav:[
+          subNav: [
             {
               path: '/activity/instruction',
               label: '演出事务指导意见',
@@ -173,6 +161,7 @@ export default {
           ]
         }
       },
+      dynamicBackground: `rgba(240, 255, 255, 0)`,
       logo: '/GoBack/goback_logo.webp',
       banners: [
         '/GoBack/banners/banner11.webp',
@@ -188,69 +177,96 @@ export default {
         // '/GoBack/banners/banner1.webp'
       ]
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
+  methods: {
+    handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      const threshold = 600
+      if (scrollTop <= threshold) {
+        let opacity = 1 - (threshold - scrollTop) / threshold
+        this.dynamicBackground = `rgba(240, 255, 255, ${opacity})`
+      } else {
+        this.dynamicBackground = `rgba(240, 255, 255, 1)`
+      }
+    }
   }
 }
 </script>
 
 <style>
-.layout{
+.layout {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.header{
+
+.header {
   width: 70%;
   display: flex;
   flex-direction: row;
   justify-content: left;
   align-items: center;
 }
-.logo{
+
+.logo {
   width: 7rem;
   height: 7rem;
   margin: 1rem;
   object-fit: cover;
   border-radius: 50%;
 }
-.header .title{
+
+.header .title {
   font-size: 1.8rem;
   font-weight: bold;
   font-style: italic;
-  color: rgba(0,83,117,1);
+  color: rgba(0, 83, 117, 1);
 }
-.header .sub-title{
+
+.header .sub-title {
   font-size: 1.8rem;
   font-style: italic;
   font-family: fantasy;
   text-decoration: underline;
-  color: rgba(0,83,117,1);
+  color: rgba(0, 83, 117, 1);
 }
-.el-menu.nav-menu{
+
+.el-menu.nav-menu {
   width: 70%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   position: sticky !important;
   top: 0;
-  background-color: rgba(0,83,117,0);
-  border-color: rgba(0,83,117,1);
+  background-color: rgba(0, 83, 117, 0);
+  border-color: rgba(0, 83, 117, 1);
   border-bottom-width: 0.2rem;
   z-index: 1;
 }
-.el-menu--popup{
+
+.el-menu--popup {
   padding: 0;
 }
-.nav-menu .text{
+
+.nav-menu .text {
   font-size: 1.2rem;
   font-weight: bold;
-  color: rgba(0,83,117,0.8);
+  color: rgba(0, 83, 117, 0.8);
   margin: 0 0.2rem;
 }
-.sub-text{
+
+.sub-text {
   font-size: 1rem;
   margin: 0 0.2rem;
 }
-.main-content{
+
+.main-content {
   z-index: 0;
   width: 70%;
   margin-bottom: 5rem;
@@ -258,19 +274,23 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.main-content:after{
+
+.main-content:after {
   content: attr(data-content);
   color: white;
 }
-.banners{
+
+.banners {
   width: 100%;
   margin-bottom: 3rem;
 }
-.banner-img{
+
+.banner-img {
   width: 100%;
   object-fit: cover;
 }
-.goback-mark{
+
+.goback-mark {
   clip-path: polygon(0 0, 0 100%, 5% 100%, 6% 85%, 9% 85%, 8.8% 88%, 6.8% 88%, 6.2% 97%, 7.2% 97%, 7.4% 94%, 8.4% 94%, 8% 100%, 9% 100%, 9.6% 91%, 12.6% 91%, 12% 100%, 13% 100%, 14% 85%, 16% 85%, 16.8% 88%, 16.6% 91%, 15.4% 92.5%, 16.4% 94%, 16.2% 97%, 15% 100%, 17% 100%, 17.4% 94%, 18.6% 91%, 20.6% 91%, 20.2% 97%, 21.2% 97%, 21.6% 91%, 24.6% 91%, 24.4% 94%, 22.4% 94%, 22.2% 97%, 24.2% 97%, 24% 100%, 25% 100%, 26% 85%, 27% 85%, 26.6% 91%, 28.6% 91%, 28.4% 94%, 26.4% 94%, 28% 100%, 27% 100%, 26.2% 97%, 26% 100%, 19% 100%, 19.4% 94%, 18.4% 94%, 18% 100%, 14% 100%, 15.2% 97%, 15.4% 94%, 14.5% 92.5%, 15.6% 91%, 15.8% 88%, 14.8% 88%, 14% 100%, 11% 100%, 11.4% 94%, 10.4% 94%, 10% 100%, 100% 100%, 100% 0);
 }
 </style>

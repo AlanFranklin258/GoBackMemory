@@ -73,7 +73,7 @@ export default {
   align-items: flex-start;
 }
 .category {
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -84,7 +84,7 @@ export default {
   border-left: 1rem solid rgba(0,83,117,1);
 }
 .row {
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: start;
