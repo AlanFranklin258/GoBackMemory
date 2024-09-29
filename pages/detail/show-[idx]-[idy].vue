@@ -1,47 +1,65 @@
 <template>
   <div>
-    <div class="title">{{data.title}}</div>
-    <div class="album">
-      <album :pictures="data.pictures" :programme="data.programme"></album>
+    <div :class="'title'+postCls">{{ albumData.title }}</div>
+    <div :class="'album'+postCls">
+      <album
+        :pictures="albumData.pictures"
+        :programme="albumData.programme"
+      ></album>
     </div>
-    <div v-if="data.video.length" class="video">
-      <div class="sub-title">视频回放：</div>
-      <a v-for="link in data.video" :href="link" target="_blank" :key="link">{{ link }}</a>
+    <div v-if="albumData.video.length" :class="'video'+postCls">
+      <div :class="'sub-title'+postCls">视频回放：</div>
+      <a
+        v-for="link in albumData.video"
+        :href="link"
+        target="_blank"
+        :key="link"
+        >{{ link }}</a
+      >
     </div>
     <div v-else class="text">暂无视频资源，正在上传到流媒体，敬请期待。</div>
   </div>
 </template>
 
-<script setup>
-const reloadPage = useReloadPage()
-if(reloadPage.value === true){
-  reloadPage.value = false
-  location.reload()
-}
-</script>
-
 <script>
-import shows from '~/assets/shows'
+import shows from "~/assets/shows";
 
 export default {
-  data: () => ({ shows }),
+  data() {
+    return {
+      albumData: null,
+      postCls: "",
+    };
+  },
   computed: {
-    data() {
-      const route = useRoute()
-      const idx = parseInt(route.params.idx)
-      const idy = parseInt(route.params.idy)
-      return shows[idx][idy]
+    albumData() {
+      const route = useRoute();
+      const idx = parseInt(route.params.idx);
+      const idy = parseInt(route.params.idy);
+      return shows[idx][idy];
+    },
+  },
+  mounted() {
+    if (import.meta.client) {
+      const isMobile =
+        /(Android|webOS|iPhone|iPod|tablet|BlackBerry|Mobile|iPad)/i.test(
+          navigator.userAgent
+        );
+      this.postCls = isMobile ? " mobile" : "";
     }
-  }
-}
+  },
+};
 </script>
 
-<style scoped>
-.title{
+<style scoped lang="less">
+.title {
   width: 100%;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
+  &.mobile{
+    font-size: 1.5rem;
+  }
 }
 .album {
   width: 95%;
@@ -50,18 +68,27 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  &.mobile{
+    margin-bottom: 2rem;
+  }
 }
-.sub-title{
+.sub-title {
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
+  &.mobile{
+    font-size: 1.2rem;
+  }
 }
-.video{
+.video {
   width: 40%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   font-size: 1rem;
   text-align: left;
+  &.mobile{
+    font-size: 0.8rem;
+  }
 }
 </style>

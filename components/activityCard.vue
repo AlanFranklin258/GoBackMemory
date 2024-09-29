@@ -1,9 +1,9 @@
 <template>
   <div>
     <NuxtLink v-if="type === 0" :to="`/detail/show-${idx}-${idy}`">
-      <div class="activity-card-container">
-        <img :src="cover" class="cover">
-        <div class="title">{{ title }}</div>
+      <div :class="'activity-card-container'+postCls">
+        <img :src="cover" :class="'cover'+postCls" />
+        <div :class="'title'+postCls">{{ title }}</div>
       </div>
     </NuxtLink>
     <NuxtLink v-if="type === 1"></NuxtLink>
@@ -13,17 +13,31 @@
 <script>
 export default {
   props: {
-    title: { type: String, default: '' },
-    cover: { type: String, default: '' },
+    title: { type: String, default: "" },
+    cover: { type: String, default: "" },
     idx: { type: Number, default: 0 },
     idy: { type: Number, default: 0 },
     // type: 0 for show, 1 for party
-    type: { type: Number, default: 0 }
-  }
-}
+    type: { type: Number, default: 0 },
+  },
+  data() {
+    return {
+      postCls: "",
+    };
+  },
+  mounted() {
+    if (import.meta.client) {
+      const isMobile =
+        /(Android|webOS|iPhone|iPod|tablet|BlackBerry|Mobile|iPad)/i.test(
+          navigator.userAgent
+        );
+      this.postCls = isMobile ? " mobile" : "";
+    }
+  },
+};
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .activity-card-container {
   border-radius: 0.8rem;
   transition: 0.2s;
@@ -31,6 +45,9 @@ export default {
   flex-direction: column;
   background-color: white;
   overflow: hidden;
+  &.mobile {
+    border-radius: 0.5rem;
+  }
 }
 
 .activity-card-container:hover {
@@ -43,11 +60,17 @@ export default {
   width: 100%;
   height: 15rem;
   object-fit: cover;
+  &.mobile {
+    height: 5rem;
+  }
 }
 
 .title {
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
+  &.mobile {
+    font-size: 0.5rem;
+  }
 }
 </style>

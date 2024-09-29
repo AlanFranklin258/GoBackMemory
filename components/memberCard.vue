@@ -1,15 +1,31 @@
 <template>
   <div class="member-card-container">
     <div class="poppoer" v-if="word">
-      <div class="popper-content">{{ word }}</div>
+      <div :class="'popper-content' + postCls">{{ word }}</div>
       <div class="popper-corner-down"></div>
     </div>
     <div class="member-card">
-      <img v-if="avatar" :src="avatar" class="member-avatar" alt="">
-      <img v-else :src="default_avatar" class="member-avatar" alt="">
-      <div class="member-text">{{ name }}</div>
+      <img
+        v-if="avatar"
+        :src="avatar"
+        :class="'member-avatar' + postCls"
+        alt=""
+      />
+      <img
+        v-else
+        :src="default_avatar"
+        :class="'member-avatar' + postCls"
+        alt=""
+      />
+      <div :class="'member-text' + postCls">{{ name }}</div>
       <div v-if="duty.length" class="duties">
-        <div v-for="d in duty" class="duty" :key="d" :style="getStyle(d)">· {{ duties[d].label }}
+        <div
+          v-for="d in duty"
+          :class="'duty' + postCls"
+          :key="d"
+          :style="getStyle(d)"
+        >
+          · {{ duties[d].label }}
         </div>
       </div>
     </div>
@@ -17,34 +33,43 @@
 </template>
 
 <script>
-
-import member_duties from '../assets/member_duties'
+import member_duties from "../assets/member_duties";
 
 export default {
   props: {
-    avatar: { type: String, default: '' },
-    name: { type: String, default: '' },
-    word: { type: String, default: '' },
+    avatar: { type: String, default: "" },
+    name: { type: String, default: "" },
+    word: { type: String, default: "" },
     duty: { type: Array, default: [] },
   },
   data() {
     return {
       duties: member_duties,
-      default_avatar: '/GoBack/members/default_member.webp'
+      default_avatar: "/GoBack/members/default_member.webp",
+      postCls: "",
+    };
+  },
+  mounted() {
+    if (import.meta.client) {
+      const isMobile =
+        /(Android|webOS|iPhone|iPod|tablet|BlackBerry|Mobile|iPad)/i.test(
+          navigator.userAgent
+        );
+      this.postCls = isMobile ? " mobile" : "";
     }
   },
   methods: {
     getStyle(index) {
       return {
         color: this.duties[index].color,
-        backgroundImage: this.duties[index].backgroundColor
-      }
-    }
-  }
-}
+        backgroundImage: this.duties[index].backgroundColor,
+      };
+    },
+  },
+};
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .member-card-container {
   display: flex;
   flex-direction: column;
@@ -64,6 +89,8 @@ export default {
   width: 90%;
   margin: auto;
   position: absolute;
+  bottom: 90%;
+  left: -20%;
   z-index: 99;
 }
 
@@ -78,6 +105,13 @@ export default {
   font-weight: bold;
   text-align: left;
   text-indent: 1rem;
+  &.mobile {
+    padding: 0.1rem;
+    width: 25vw;
+    border-radius: 0.3rem;
+    font-size: 0.5rem;
+    text-indent: 0.5rem;
+  }
 }
 
 .popper-corner-down {
@@ -108,6 +142,9 @@ export default {
   width: 100%;
   border-radius: 0.8rem 0.8rem 0 0;
   object-fit: contain;
+  &.mobile {
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
 }
 
 .member-text {
@@ -117,6 +154,10 @@ export default {
   font-weight: bold;
   text-align: center;
   background-color: white;
+  &.mobile {
+    border-radius: 0 0 0.3rem 0.3rem;
+    font-size: 0.5rem;
+  }
 }
 
 .duties {
@@ -130,12 +171,15 @@ export default {
 }
 
 .duty {
-  width: 3rem;
+  width: 2rem;
   margin: 0.1rem 0;
   clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
   text-align: left;
   text-indent: 0.2rem;
   font-weight: bold;
   font-size: 0.8rem;
+  &.mobile {
+    font-size: 0.4rem;
+  }
 }
 </style>

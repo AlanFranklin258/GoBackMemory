@@ -11,7 +11,7 @@
           :idx="idx"
           :idy="idr * cols + idy"
           :type="0"
-          style="width: 40%; margin: 5%"
+          style="width: 44%; margin: 3%"
         ></activity-card-vue>
       </div>
     </div>
@@ -29,21 +29,31 @@ export default {
       shows,
       cols: 2,
       categories: [
-        '2023-2024',
-        '2022-2023',
-        '2021-2022',
-        '2020-2021',
-        '2019-2020',
-        '2018-2019',
+        "2023-2024",
+        "2022-2023",
+        "2021-2022",
+        "2020-2021",
+        "2019-2020",
+        "2018-2019",
         "2017-2018",
         "2016-2017",
         "2015-2016",
       ],
       groups: [],
+      postCls: "",
     };
   },
   created() {
     this.divider();
+  },
+  mounted() {
+    if (import.meta.client) {
+      const isMobile =
+        /(Android|webOS|iPhone|iPod|tablet|BlackBerry|Mobile|iPad)/i.test(
+          navigator.userAgent
+        );
+      this.postCls = isMobile ? " mobile" : "";
+    }
   },
   methods: {
     divider() {
@@ -59,13 +69,12 @@ export default {
         }
         this.groups.push(rows);
       }
-      // this.groups.reverse()
     },
   },
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .home {
   width: 95%;
   display: flex;
@@ -77,11 +86,14 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.title{
+.title {
   font-size: 1.5rem;
   font-weight: bold;
   text-indent: 0.5rem;
-  border-left: 1rem solid rgba(0,83,117,1);
+  border-left: 1rem solid rgba(0, 83, 117, 1);
+  &.moblie {
+    font-size: 1rem;
+  }
 }
 .row {
   width: 100%;
