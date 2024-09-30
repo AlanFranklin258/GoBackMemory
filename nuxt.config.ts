@@ -38,16 +38,6 @@ export default defineNuxtConfig({
       "/member/fellow-7",
       "/member/fellow-8",
       "/member/fellow-9",
-      // 移动端成员页面
-      "/mobile/member/fellow-1",
-      "/mobile/member/fellow-2",
-      "/mobile/member/fellow-3",
-      "/mobile/member/fellow-4",
-      "/mobile/member/fellow-5",
-      "/mobile/member/fellow-6",
-      "/mobile/member/fellow-7",
-      "/mobile/member/fellow-8",
-      "/mobile/member/fellow-9",
     ],
   },
 });

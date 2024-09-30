@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div v-for="(category, idx) in categories" :key="category" class="category">
-      <div class="title">{{ category }}</div>
+      <div :class="'title' + postCls">{{ category }}</div>
       <div v-for="(row, idr) in groups[idx]" :key="row" class="row">
         <activity-card-vue
           v-for="(show, idy) in row"
@@ -91,7 +91,7 @@ export default {
   font-weight: bold;
   text-indent: 0.5rem;
   border-left: 1rem solid rgba(0, 83, 117, 1);
-  &.moblie {
+  &.mobile {
     font-size: 1rem;
   }
 }

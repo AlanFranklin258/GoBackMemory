@@ -171,7 +171,7 @@ export default {
 }
 
 .duty {
-  width: 2rem;
+  width: 3rem;
   margin: 0.1rem 0;
   clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
   text-align: left;
@@ -179,6 +179,7 @@ export default {
   font-weight: bold;
   font-size: 0.8rem;
   &.mobile {
+    width: 2rem;
     font-size: 0.4rem;
   }
 }
