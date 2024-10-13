@@ -24,20 +24,9 @@ export default defineNuxtConfig({
     baseURL: "/GoBack/",
   },
   modules: ["@element-plus/nuxt", "@nuxtjs/tailwindcss"],
-  // 非常抽象，动态路由但凡不在nuxtlink里显示声明，那么就会导致SSR不会预渲染这些页面，进而导致直接访问这些路由会404
-  // 移动端动态路由同理。
-  generate: {
-    routes: [
-      // PC端成员页面
-      "/member/fellow-1",
-      "/member/fellow-2",
-      "/member/fellow-3",
-      "/member/fellow-4",
-      "/member/fellow-5",
-      "/member/fellow-6",
-      "/member/fellow-7",
-      "/member/fellow-8",
-      "/member/fellow-9",
-    ],
+  nitro: {
+    output: {
+      publicDir: ".output/GoBack",
+    },
   },
 });

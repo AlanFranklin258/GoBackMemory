@@ -337,7 +337,13 @@ export default [
         "/GoBack/shows/gb2023/006.webp",
         "/GoBack/shows/gb2023/007.webp",
       ],
-      video: ["https://www.bilibili.com/video/BV1js4y1T7da/"],
+      video: [
+        "https://www.bilibili.com/video/BV1js4y1T7da/",
+        "https://www.bilibili.com/video/BV111421i7hM/",
+        "https://www.bilibili.com/video/BV1my411a7Mj/",
+        "https://www.bilibili.com/video/BV19D421G7fk/",
+        "https://www.bilibili.com/video/BV1PU411Z7Qh/",
+      ],
     },
   ],
   [
@@ -457,7 +463,10 @@ export default [
         "/GoBack/shows/gb2024/039.webp",
         "/GoBack/shows/gb2024/040.webp",
       ],
-      video: [],
+      video: [
+        "https://www.bilibili.com/video/BV1EE421F7ix/",
+        "https://www.bilibili.com/video/BV1ND421V7Df/",
+      ],
     },
   ],
 ].reverse();

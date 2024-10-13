@@ -68,10 +68,20 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  animation: floating 5s;
   &.mobile{
     margin-bottom: 2rem;
   }
 }
+@keyframes floating {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .sub-title {
   font-size: 1.5rem;
   font-weight: bold;
