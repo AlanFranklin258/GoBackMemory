@@ -29,9 +29,16 @@
     <div :class="'sub-title' + postCls">2024.09.28</div>
     <div :class="'text' + postCls">
       网站迁移到新服务器，改为域名访问：<a
-        href="http://utszart.cn/GoBack"
+        href="https://utszart.cn/GoBack"
         class="link"
         >utszart.cn/GoBack</a
+      >
+    </div>
+    <div :class="'text' + postCls">
+      域名访问如果受限，亦可通过IP访问：<a
+        href="http://120.24.21.171/GoBack/"
+        class="link"
+        >http://120.24.21.171/GoBack/</a
       >
     </div>
     <div :class="'sub-title' + postCls">2024.05.16</div>

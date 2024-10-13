@@ -1,6 +1,6 @@
 <template>
   <div class="member-card-container">
-    <div class="poppoer" v-if="word">
+    <div :class="'popper' + postCls" v-if="word">
       <div :class="'popper-content' + postCls">{{ word }}</div>
       <div class="popper-corner-down"></div>
     </div>
@@ -77,11 +77,11 @@ export default {
   position: relative;
 }
 
-.member-card-container:hover .poppoer {
+.member-card-container:hover .popper {
   opacity: 1;
 }
 
-.poppoer {
+.popper {
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -90,8 +90,11 @@ export default {
   margin: auto;
   position: absolute;
   bottom: 90%;
-  left: -20%;
+  left: -10%;
   z-index: 99;
+  &.mobile{
+    left: -20%;
+  }
 }
 
 .popper-content {
@@ -107,7 +110,7 @@ export default {
   text-indent: 1rem;
   &.mobile {
     padding: 0.1rem;
-    width: 25vw;
+    width: 22vw;
     border-radius: 0.3rem;
     font-size: 0.5rem;
     text-indent: 0.5rem;
