@@ -61,17 +61,6 @@
     </div>
     <div :class="'sub-title' + postCls">2024.04.29</div>
     <div :class="'text' + postCls">网站更新了移动端布局（长宽比约1：2）。</div>
-    <div :class="'sub-title' + postCls">2024.01.28</div>
-    <div :class="'text' + postCls">
-      网站重建，全面更新了UI。旧版不再更新，但可以仍然可以<NuxtLink
-        to="http://120.79.146.193/gobacktheatre/"
-        class="link"
-        >访问</NuxtLink
-      >。
-    </div>
-    <div :class="'text' + postCls">
-      新版网站的演出回顾、团建活动板块，由于还没设计好呈现方式，所以暂时TBD。可以访问旧网站查看。
-    </div>
     <div :class="'sub-title' + postCls">2023.12.08</div>
     <div :class="'text' + postCls">
       网站更新了2023-2024年度的<NuxtLink

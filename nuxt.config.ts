@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-8",
       viewport: "width=device-width,initial-scale=1",
-      title: "Goback Drama Club",
+      title: "Goback Drama Theater",
       meta: [
         {
           name: "description",

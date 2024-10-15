@@ -4,7 +4,7 @@
       <div :class="'title' + postCls">社团章程</div>
       <div :class="'sub-title' + postCls">第一章 总则</div>
       <div :class="'text' + postCls"><span style="font-weight:bold">第一条 </span>本社团的名称是告白话剧社，英文名是GoBack Drama
-        Club，标语是“不加戏，怎么红！”。
+        Theater，标语是“不加戏，怎么红！”。
       </div>
       <div :class="'text' + postCls"><span style="font-weight:bold">第二条 </span>本社团是研究、学习话剧表演的兴趣类、非营利性学生社团。</div>
       <div :class="'text' + postCls"><span style="font-weight:bold">第三条 </span>本社团由哈尔滨工业大学（深圳）学生艺术团直接领导。</div>

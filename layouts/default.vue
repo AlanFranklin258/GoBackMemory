@@ -2,10 +2,10 @@
   <div :class="'layout' + postCls">
     <background></background>
     <div :class="'header' + postCls">
-      <img :src="logo" :class="'logo' + postCls" />
+      <img :src="gobackLogo" :class="'logo' + postCls" />
       <div style="display: flex; flex-direction: column; align-items: start">
         <div :class="'title' + postCls">告白话剧社</div>
-        <div :class="'sub-title' + postCls">GoBack Drama Club</div>
+        <div :class="'sub-title' + postCls">GoBack Drama Theater</div>
       </div>
     </div>
     <el-menu
@@ -193,7 +193,8 @@ export default {
         },
       },
       dynamicBackground: `rgba(240, 255, 255, 0)`,
-      logo: "/GoBack/goback_logo.webp",
+      hitszartLogo: '/GoBack/hitszart_logo.webp',
+      gobackLogo: "/GoBack/goback_logo.webp",
       banners: [
         "/GoBack/banners/banner11.webp",
         "/GoBack/banners/banner10.webp",
