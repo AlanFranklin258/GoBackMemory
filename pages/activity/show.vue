@@ -15,6 +15,10 @@
         ></activity-card-vue>
       </div>
     </div>
+    <div>
+      <el-image :src="albumCover1" class="preload"></el-image
+      ><el-image :src="albumCover2" class="preload"></el-image>
+    </div>
   </div>
 </template>
 
@@ -29,6 +33,7 @@ export default {
       shows,
       cols: 2,
       categories: [
+        "2024-2025",
         "2023-2024",
         "2022-2023",
         "2021-2022",
@@ -41,6 +46,8 @@ export default {
       ],
       groups: [],
       postCls: "",
+      albumCover1: "/GoBack/images/album_cover.webp",
+      albumCover2: "/GoBack/images/m_album_cover.webp",
     };
   },
   created() {
@@ -100,5 +107,8 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: start;
+}
+.preload {
+  height: 0 !important;
 }
 </style>

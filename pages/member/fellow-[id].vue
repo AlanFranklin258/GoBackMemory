@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div v-for="group in groups" :key="group.group" class="col">
+    <div v-for="(group, id) in groups" :key="group.group" class="col">
       <div v-if="group.type === 0" class="col type-0">
         <div :class="'title-1' + postCls">{{ group.group }}</div>
         <div class="row" v-for="row in group.members" :key="row">
@@ -30,25 +30,17 @@
         </div>
       </div>
       <div v-if="group.type === 2" :class="'col type-2' + postCls">
-        <div :class="'title-2' + postCls">{{ group.group }}</div>
-        <div class="row" v-for="row in group.members" :key="row">
-          <member-card
-            v-for="member in row"
-            :key="member"
-            :avatar="member.avatar"
-            :name="member.mark"
-            :word="member.word"
-            :duty="member.duty"
-            style="width: 18%; margin: 0 1%"
-          ></member-card>
+        <div :class="'title-2' + postCls">
+          <div
+            v-if="!group.open"
+            class="open-btn"
+            @click="changeOpen(id)"
+          ></div>
+          <div v-else class="close-btn" @click="changeOpen(id)"></div>
+          {{ group.group }}
         </div>
-        <div
-          v-for="subGroup in group.subGroups"
-          :key="subGroup.group"
-          class="col type-3"
-        >
-          <div :class="'title-3' + postCls">{{ subGroup.group }}</div>
-          <div class="sub-row" v-for="row in subGroup.members" :key="row">
+        <div v-if="group.open" class="group-content">
+          <div class="row" v-for="row in group.members" :key="row">
             <member-card
               v-for="member in row"
               :key="member"
@@ -58,6 +50,38 @@
               :duty="member.duty"
               style="width: 18%; margin: 0 1%"
             ></member-card>
+          </div>
+          <div
+            v-for="(subGroup, subId) in group.subGroups"
+            :key="subGroup.group"
+            class="col type-3"
+          >
+            <div :class="'title-3' + postCls">
+              <div
+                v-if="!subGroup.open"
+                class="open-btn"
+                @click="changeOpenSub(id, subId)"
+              ></div>
+              <div
+                v-else
+                class="close-btn"
+                @click="changeOpenSub(id, subId)"
+              ></div>
+              {{ subGroup.group }}
+            </div>
+            <div v-if="subGroup.open" class="group-content">
+              <div class="sub-row" v-for="row in subGroup.members" :key="row">
+                <member-card
+                  v-for="member in row"
+                  :key="member"
+                  :avatar="member.avatar"
+                  :name="member.mark"
+                  :word="member.word"
+                  :duty="member.duty"
+                  style="width: 18%; margin: 0 1%"
+                ></member-card>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -101,6 +125,7 @@ export default {
         group.group = members[this.id][i].group;
         group.members = [];
         group.subGroups = [];
+        group.open = members[this.id][i].type <= 1 ? true : false;
         let row = [];
         for (let j = 0; j < members[this.id][i].members.length; j++) {
           row.push(members[this.id][i].members[j]);
@@ -124,6 +149,19 @@ export default {
         }
       }
       this.groups = this.groups.filter((e) => e.type !== 3);
+    },
+    changeOpen(id) {
+      if (this.groups[id].type <= 1) return;
+      this.groups[id].open = ~this.groups[id].open;
+      if (!this.groups[id].open) {
+        this.groups[id].subGroups.forEach((sg) => {
+          sg.open = false;
+        });
+      }
+    },
+    changeOpenSub(id, subId) {
+      this.groups[id].subGroups[subId].open =
+        ~this.groups[id].subGroups[subId].open;
     },
   },
 };
@@ -152,11 +190,62 @@ export default {
   font-size: 2rem;
   font-weight: bold;
   text-align: left;
-  text-indent: 0.5rem;
-  border-left: 1rem solid rgba(0, 83, 117, 1);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   border-top: 0.2rem solid rgba(0, 83, 117, 1);
   &.mobile {
     font-size: 1.2rem;
+    .open-btn {
+      width: 2rem;
+      height: 2rem;
+    }
+    .close-btn {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  .open-btn {
+    background-color: rgba(0, 83, 117, 1);
+    width: 3rem;
+    height: 3rem;
+    clip-path: polygon(
+      0 0,
+      0 80%,
+      50% 100%,
+      100% 80%,
+      100% 60%,
+      50% 80%,
+      0 60%,
+      0 40%,
+      50% 60%,
+      100% 40%,
+      100% 0
+    );
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .close-btn {
+    background-color: rgba(0, 83, 117, 1);
+    width: 3rem;
+    height: 3rem;
+    clip-path: polygon(
+      0 0,
+      0 100%,
+      50% 80%,
+      100% 100%,
+      100% 80%,
+      50% 60%,
+      0 80%,
+      0 60%,
+      50% 40%,
+      100% 60%,
+      100% 0
+    );
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -176,8 +265,13 @@ export default {
 
 .type-2 {
   width: 100%;
-  border-radius: 0 0 2rem 2rem;
-  background-color: rgba(255, 255, 255, 0.2);
+  // border-radius: 0 0 1rem 1rem;
+  // background-color: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
   margin-top: 1rem;
   padding-bottom: 1rem;
   &.mobile {
@@ -209,19 +303,83 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   text-align: left;
-  text-indent: 0.5rem;
-  border-left: 1rem solid rgba(0, 83, 117, 1);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-top: 0.2rem solid rgba(0, 83, 117, 1);
   &.mobile {
     font-size: 1rem;
+    .open-btn {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    .close-btn {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  .open-btn {
+    background-color: rgba(0, 83, 117, 1);
+    width: 2rem;
+    height: 2rem;
+    clip-path: polygon(
+      0 0,
+      0 80%,
+      50% 100%,
+      100% 80%,
+      100% 60%,
+      50% 80%,
+      0 60%,
+      0 40%,
+      50% 60%,
+      100% 40%,
+      100% 0
+    );
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .close-btn {
+    background-color: rgba(0, 83, 117, 1);
+    width: 2rem;
+    height: 2rem;
+    clip-path: polygon(
+      0 0,
+      0 100%,
+      50% 80%,
+      100% 100%,
+      100% 80%,
+      50% 60%,
+      0 80%,
+      0 60%,
+      50% 40%,
+      100% 60%,
+      100% 0
+    );
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
 .sub-row {
   width: 100%;
-  padding-bottom: 1rem;
+  padding: 1rem 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  border-left: 0.2rem solid rgba(0, 83, 117, 1);
+}
+
+.group-content {
+  animation: expand 1s ease-in-out;
+}
+
+@keyframes expand {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>

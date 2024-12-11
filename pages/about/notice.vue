@@ -26,6 +26,10 @@
     <div :class="'text' + postCls">
       <span style="font-weight: bold">Email:</span> 916824242@qq.com
     </div>
+    <div :class="'sub-title' + postCls">2024.12.11</div>
+    <div :class="'text' + postCls">
+      网站更新了2024年秋季《告白之夜》的演出回顾和成员介绍。
+    </div>
     <div :class="'sub-title' + postCls">2024.09.28</div>
     <div :class="'text' + postCls">
       网站迁移到新服务器，改为域名访问：<a

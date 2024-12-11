@@ -86,7 +86,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 90%;
+  width: 140%;
   margin: auto;
   position: absolute;
   bottom: 90%;
@@ -99,7 +99,7 @@ export default {
 
 .popper-content {
   padding: 0.3rem;
-  width: max-content;
+  // width: max-content;
   height: auto;
   min-height: 1rem;
   border-radius: 0.5rem;

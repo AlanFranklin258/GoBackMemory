@@ -196,7 +196,9 @@ export default {
       hitszartLogo: '/GoBack/hitszart_logo.webp',
       gobackLogo: "/GoBack/goback_logo.webp",
       banners: [
-        "/GoBack/banners/banner11.webp",
+        "/GoBack/banners/banner13.webp",
+        "/GoBack/banners/banner12.webp",
+        // "/GoBack/banners/banner11.webp",
         "/GoBack/banners/banner10.webp",
         // '/GoBack/banners/banner9.webp',
         "/GoBack/banners/banner8.webp",
