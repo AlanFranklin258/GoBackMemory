@@ -484,6 +484,7 @@ export default [
       ],
       pictures: [
         "/GoBack/shows/gb20242/000.webp",
+        "/GoBack/shows/gb20242/100.webp",
         "/GoBack/shows/gb20242/101.webp",
         "/GoBack/shows/gb20242/102.webp",
         "/GoBack/shows/gb20242/103.webp",
@@ -520,6 +521,7 @@ export default [
         "/GoBack/shows/gb20242/602.webp",
         "/GoBack/shows/gb20242/603.webp",
         "/GoBack/shows/gb20242/604.webp",
+        "/GoBack/shows/gb20242/605.webp",
       ],
       video: [],
     },

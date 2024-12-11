@@ -2163,7 +2163,7 @@ export default [
           duty: [6],
         },
         {
-          mark: "lzq",
+          mark: "夏思鲤",
           avatar: "/GoBack/members/2023-2024/lizq.webp",
           word: "",
           duty: [8],
@@ -2415,8 +2415,8 @@ export default [
           duty: [0, 2, 3],
         },
         {
-          mark: "量子玫瑰",
-          avatar: "/GoBack/members/default_member.webp",
+          mark: "清晏",
+          avatar: "/GoBack/members/2023-2024/liangqy.webp",
           word: "",
           duty: [1],
         },
@@ -2669,7 +2669,7 @@ export default [
           duty: [8],
         },
         {
-          mark: "lzq",
+          mark: "夏思鲤",
           avatar: "/GoBack/members/2024-2025/lizq.webp",
           word: "",
           duty: [8],
@@ -2683,6 +2683,12 @@ export default [
         {
           mark: "发哥",
           avatar: "/GoBack/members/2024-2025/zhuhf.webp",
+          word: "",
+          duty: [9],
+        },
+        {
+          mark: "dushck",
+          avatar: "/GoBack/members/2024-2025/liqm.webp",
           word: "",
           duty: [9],
         },
@@ -2748,7 +2754,7 @@ export default [
         },
         {
           mark: "清晏",
-          avatar: "/GoBack/members/default_member.webp",
+          avatar: "/GoBack/members/2024-2025/liangqy.webp",
           word: "",
           duty: [1],
         },
@@ -2770,7 +2776,6 @@ export default [
           word: "嬴政啊嬴政，我仿佛看到了你的末日！",
           duty: [],
         },
-
         {
           mark: "秦舞阳",
           avatar: "/GoBack/members/2024-2025/wanghj1.webp",
