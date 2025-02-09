@@ -364,13 +364,14 @@ export default {
 
 .sub-row {
   width: 100%;
-  padding: 1rem 0;
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
 
 .group-content {
+  width: 100%;
   animation: expand 1s ease-in-out;
 }
 

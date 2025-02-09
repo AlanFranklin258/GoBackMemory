@@ -37,7 +37,7 @@ export default [
   {
     label: '场务',
     color: 'white',
-    backgroundColor: 'radial-gradient(closest-side at 75% 25%, white, coral)'
+    backgroundColor: 'radial-gradient(closest-side at 75% 25%, white, steelblue)'
   },
   {
     label: '中控',
@@ -48,5 +48,21 @@ export default [
     label: '摄影',
     color: 'white',
     backgroundColor: 'radial-gradient(closest-side at 75% 25%, white, darkblue)'
-  }
+  },
+  // 以下三类duty暂时不需要展示tag
+  // {
+  //   label: '社长',
+  //   color: 'white',
+  //   backgroundColor: 'radial-gradient(closest-side at 75% 25%, white, darkblue)'
+  // },
+  // {
+  //   label: '副社',
+  //   color: 'white',
+  //   backgroundColor: 'radial-gradient(closest-side at 75% 25%, white, darkblue)'
+  // },
+  // {
+  //   label: '社员',
+  //   color: 'white',
+  //   backgroundColor: 'radial-gradient(closest-side at 75% 25%, white, darkblue)'
+  // }
 ]

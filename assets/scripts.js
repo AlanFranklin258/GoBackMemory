@@ -59,7 +59,7 @@ export default [
     },
     {
       name: "《聂耳小提琴的前世传奇》",
-      source: "《国家宝藏》第二季作品",
+      source: "《国家宝藏》S2作品",
       type: "情景剧/革命",
       duration: "15 min",
       access: "",

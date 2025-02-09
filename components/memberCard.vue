@@ -1,5 +1,5 @@
 <template>
-  <div class="member-card-container">
+  <div :class="`member-card-container type-` + duty[0] + postCls">
     <div :class="'popper' + postCls" v-if="word">
       <div :class="'popper-content' + postCls">{{ word }}</div>
       <div class="popper-corner-down"></div>
@@ -18,9 +18,9 @@
         alt=""
       />
       <div :class="'member-text' + postCls">{{ name }}</div>
-      <div v-if="duty.length" class="duties">
+      <div v-if="duty_in_show.length" class="duties">
         <div
-          v-for="d in duty"
+          v-for="d in duty_in_show"
           :class="'duty' + postCls"
           :key="d"
           :style="getStyle(d)"
@@ -47,7 +47,11 @@ export default {
       duties: member_duties,
       default_avatar: "/GoBack/members/default_member.webp",
       postCls: "",
+      duty_in_show: [],
     };
+  },
+  created() {
+    this.duty_in_show = this.duty.filter((e) => e < 10);
   },
   mounted() {
     if (import.meta.client) {
@@ -75,12 +79,100 @@ export default {
   flex-direction: column;
   align-items: center;
   position: relative;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  // background: linear-gradient(45deg, black 0, black 30%, silver 100%);
+  transition: 0.2s;
+  &.mobile {
+    padding: 0.2rem;
+  }
+  &.type-0 {
+    background: linear-gradient(45deg, black 0, black 30%, gold 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 gold;
+    }
+  }
+  &.type-1 {
+    background: linear-gradient(45deg, black 0, black 30%, silver 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 dimgray;
+    }
+  }
+  &.type-2 {
+    background: linear-gradient(45deg, black 0, black 30%, red 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 red;
+    }
+  }
+  &.type-3 {
+    background: linear-gradient(45deg, black 0, black 30%, tan 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 tan;
+    }
+  }
+  &.type-4 {
+    background: linear-gradient(45deg, black 0, black 30%, blueviolet 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 blueviolet;
+    }
+  }
+  &.type-5 {
+    background: linear-gradient(45deg, black 0, black 30%, hotpink 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 hotpink;
+    }
+  }
+  &.type-6 {
+    background: linear-gradient(45deg, black 0, black 30%, skyblue 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 skyblue;
+    }
+  }
+  &.type-7 {
+    background: linear-gradient(45deg, black 0, black 30%, steelblue 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 steelblue;
+    }
+  }
+  &.type-8 {
+    background: linear-gradient(45deg, black 0, black 30%, seagreen 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 seagreen;
+    }
+  }
+  &.type-9 {
+    background: linear-gradient(45deg, black 0, black 30%, darkblue 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 darkblue;
+    }
+  }
+  &.type-10 {
+    background: linear-gradient(45deg, black 0, black 30%, gold 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 gold;
+    }
+  }
+  &.type-11 {
+    background: linear-gradient(45deg, black 0, black 30%, silver 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 dimgray;
+    }
+  }
+  &.type-12 {
+    background: linear-gradient(45deg, black 0, black 30%, peru 100%);
+    &:hover {
+      box-shadow: 0 0 1.5rem 0 peru;
+    }
+  }
 }
 
-.member-card-container:hover .popper {
-  opacity: 1;
+.member-card-container:hover {
+  cursor: pointer;
+  // border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;
+  .popper {
+    opacity: 1;
+  }
 }
-
 .popper {
   opacity: 0;
   display: flex;
@@ -92,7 +184,7 @@ export default {
   bottom: 90%;
   left: -10%;
   z-index: 99;
-  &.mobile{
+  &.mobile {
     left: -20%;
   }
 }
@@ -126,8 +218,7 @@ export default {
 }
 
 .member-card {
-  border-radius: 0 0 0.8rem 0.8rem;
-  transition: 0.2s;
+  // border-radius: 0 0 0.8rem 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -135,15 +226,15 @@ export default {
   position: relative;
 }
 
-.member-card:hover {
-  cursor: pointer;
-  box-shadow: 0 10px 25px 0 grey;
-  border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;
-}
+// .member-card:hover {
+//   cursor: pointer;
+//   box-shadow: 0 10px 25px 0 grey;
+//   border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;
+// }
 
 .member-avatar {
   width: 100%;
-  border-radius: 0.8rem 0.8rem 0 0;
+  // border-radius: 0.8rem 0.8rem 0 0;
   object-fit: contain;
   &.mobile {
     border-radius: 0.5rem 0.5rem 0 0;
@@ -156,7 +247,8 @@ export default {
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
-  background-color: white;
+  background-color: black;
+  color: white;
   &.mobile {
     border-radius: 0 0 0.3rem 0.3rem;
     font-size: 0.5rem;

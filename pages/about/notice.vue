@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <!-- <div class="home">
     <div :class="'title' + postCls">更新信息</div>
     <div :class="'sub-title' + postCls">【置顶】2023.10.01</div>
     <div :class="'text' + postCls">
@@ -113,15 +113,33 @@
       >
       的详细内容，使用相册动画来展示演出的图片。同时，网站对所有图片进行了压缩，清晰度有所下降。
     </div>
+  </div> -->
+  <div class="home">
+    <div :class="'title' + postCls">更新信息</div>
+    <NoticeCard
+      class="notice-card"
+      v-for="notice in newNotices"
+      :timestamp="notice.timestamp"
+      :type="notice.type"
+      :content="notice.content"
+    ></NoticeCard>
   </div>
 </template>
 
 <script>
+import notices from "~/assets/notices";
+import noticeCardVue from "~/components/noticeCard.vue";
+
 export default {
+  components: { noticeCardVue },
   data() {
     return {
+      newNotices: [],
       postCls: "",
     };
+  },
+  created() {
+    this.resort(notices);
   },
   mounted() {
     if (import.meta.client) {
@@ -131,6 +149,16 @@ export default {
         );
       this.postCls = isMobile ? " mobile" : "";
     }
+  },
+  methods: {
+    resort(notices) {
+      this.newNotices = this.newNotices.concat(
+        notices.filter((notice) => notice.type === 0)
+      );
+      this.newNotices = this.newNotices.concat(
+        notices.filter((notice) => notice.type !== 0)
+      );
+    },
   },
 };
 </script>
@@ -178,5 +206,9 @@ export default {
 .link {
   color: rgba(0, 83, 117, 1);
   text-decoration: underline;
+}
+.notice-card {
+  width: 100%;
+  margin: 0.5rem 0;
 }
 </style>

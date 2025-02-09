@@ -523,7 +523,10 @@ export default [
         "/GoBack/shows/gb20242/604.webp",
         "/GoBack/shows/gb20242/605.webp",
       ],
-      video: [],
+      video: [
+        'https://www.bilibili.com/video/BV1kNqmYvEHE',
+        'https://www.bilibili.com/video/BV1Xkq2YnEAr'
+      ],
     },
   ],
 ].reverse();
