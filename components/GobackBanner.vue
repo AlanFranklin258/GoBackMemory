@@ -19,19 +19,20 @@ import { img_prefix } from "~/assets/constants";
 import { ref, onMounted } from "vue";
 const dynamicHeight = ref("");
 const banners = [
-  "/banners/banner13.webp",
-  "/banners/banner12.webp",
-  // "banners/banner11.webp",
-  "/banners/banner10.webp",
-  // "banners/banner9.webp",
-  "/banners/banner8.webp",
-  // "banners/banner7.webp",
-  "/banners/banner6.webp",
-  "/banners/banner5.webp",
-  "/banners/banner4.webp",
-  "/banners/banner3.webp",
-  "/banners/banner2.webp",
-  // "banners/banner1.webp",
+  "/banners/banner_taolesi.webp",
+  "/banners/banner_xiyou.webp",
+  "/banners/banner_groupphoto9.webp",
+  // "banners/banner_gb2024.webp",
+  "/banners/banner_window.webp",
+  // "banners/banner_gb20232.webp",
+  "/banners/banner_snake.webp",
+  // "banners/banner_gb2023.webp",
+  "/banners/banner_crane.webp",
+  "/banners/banner_nieer.webp",
+  "/banners/banner_mountain.webp",
+  "/banners/banner_wulong.webp",
+  "/banners/banner_taohuayuan.webp",
+  // "banners/banner_f104.webp",
 ];
 
 onMounted(() => {

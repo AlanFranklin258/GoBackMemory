@@ -47,6 +47,8 @@ import { get_year } from "~/assets/utils";
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    font-size: 1.5vh;
+    font-weight: bold;
   }
   .year {
     width: 100%;

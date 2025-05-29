@@ -1,6 +1,12 @@
 <template>
   <div :class="'membercard type-' + member.duty[0]">
-    <img class="avatar" :src="img_prefix + member.avatar" />
+    <img
+      class="avatar"
+      :src="
+        img_prefix +
+        (member.avatar !== '' ? member.avatar : '/members/default_member.webp')
+      "
+    />
     <div class="mark">{{ member.mark }}</div>
     <div v-if="filteredDuty && filteredDuty.length > 0" class="duty">
       <div

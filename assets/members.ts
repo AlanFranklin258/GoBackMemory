@@ -330,13 +330,13 @@ const members = [
         },
         {
           mark: "Q",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [12],
         },
         {
           mark: "YY",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [12],
         },
@@ -446,7 +446,7 @@ const members = [
         },
         {
           mark: "H",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [8],
         },
@@ -548,7 +548,7 @@ const members = [
         },
         {
           mark: "保安M",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [12],
         },
@@ -584,7 +584,7 @@ const members = [
         },
         {
           mark: "J",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [12],
         },
@@ -670,7 +670,7 @@ const members = [
         },
         {
           mark: "追光者",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [8],
         },
@@ -1116,7 +1116,7 @@ const members = [
       members: [
         {
           mark: "K.L.K",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [12],
         },
@@ -1160,7 +1160,7 @@ const members = [
         },
         {
           mark: "如如",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [1],
         },
@@ -1172,7 +1172,7 @@ const members = [
         },
         {
           mark: "萌萌",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [12],
         },
@@ -1588,7 +1588,7 @@ const members = [
         },
         {
           mark: "革命烈士",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [12],
         },
@@ -2564,7 +2564,7 @@ const members = [
         },
         {
           mark: "白线",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "",
           duty: [5, 8],
         },
@@ -2738,7 +2738,7 @@ const members = [
         },
         {
           mark: "刘亚迪",
-          avatar: "/members/default_member.webp",
+          avatar: "",
           word: "大王负剑！大王负剑！",
           duty: [12],
         },
@@ -2836,6 +2836,114 @@ const members = [
           mark: "钟大夫",
           avatar: "/members/2024-2025/kongst1.webp",
           word: "我应该生活得很好，我应该放弃这段鸡肋的婚姻，我会过得很幸福。",
+          duty: [12],
+        },
+      ],
+    },
+    {
+      type: 1,
+      group: "《告白之夜2025·春》台前幕后",
+      members: [
+        {
+          mark: "铁狼",
+          avatar: "/members/2024-2025/wanghj.webp",
+          word: "",
+          duty: [0, 2, 7],
+        },
+      ],
+    },
+    {
+      type: 2,
+      group: "《披星戴月的想你》剧组",
+      members: [
+        {
+          mark: "小孔",
+          avatar: "/members/2024-2025/kongst2.webp",
+          word: "我打死你！",
+          duty: [0, 2, 3],
+        },
+        {
+          mark: "小杰",
+          avatar: "/members/2024-2025/oumj1.webp",
+          word: "对不起，我忘了。",
+          duty: [12],
+        },
+        {
+          mark: "小霂",
+          avatar: "/members/2024-2025/weimy1.webp",
+          word: "没事儿。",
+          duty: [12],
+        },
+        {
+          mark: "小陈",
+          avatar: "/members/2024-2025/chenh.webp",
+          word: "百年好合~",
+          duty: [12],
+        },
+        {
+          mark: "小涵",
+          avatar: "/members/2024-2025/herh1.webp",
+          word: "我是美作",
+          duty: [12],
+        },
+      ],
+    },
+    {
+      type: 2,
+      group: "《电子烟灰》剧组",
+      members: [
+        {
+          mark: "月半衔蝉",
+          avatar: "/members/2024-2025/zhangcx1.webp",
+          word: "为了戏剧，不顾明天；因为戏剧，还有明天。",
+          duty: [0, 2, 3],
+        },
+        {
+          mark: "小白",
+          avatar: "",
+          word: "你说在网络世界，一个人被删除是不是就等于死亡？",
+          duty: [12],
+        },
+        {
+          mark: "电子",
+          avatar: "",
+          word: "遗忘不是一种记忆的失败，而是一种记忆的功能。",
+          duty: [12],
+        },
+      ],
+    },
+    {
+      type: 2,
+      group: "《民国往事》剧组",
+      members: [
+        {
+          mark: "向晚",
+          avatar: "",
+          word: "",
+          duty: [0, 2, 3],
+        },
+      ],
+    },
+    {
+      type: 2,
+      group: "《恋爱的犀牛》剧组",
+      members: [
+        {
+          mark: "全场唯一真派",
+          avatar: "",
+          word: "",
+          duty: [0, 2, 3],
+        },
+        {
+          mark: "马路",
+          avatar: "",
+          word: "黄昏是我一天中视力最差的时候，一眼望去满街都是美女。",
+          duty: [12],
+        },
+        {
+          mark: "明明",
+          avatar: "",
+          word: "人是可以在二氧化碳里呼吸的，只要有爱情。",
           duty: [12],
         },
       ],

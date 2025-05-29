@@ -247,6 +247,27 @@ const scripts = [
       duration: "30",
     },
   ],
+  [
+    {
+      name: "披星戴月的想你",
+      from: "喜剧大师S1作品",
+      type: "情景喜剧",
+      duration: "15",
+    },
+    {
+      name: "电子烟灰",
+      from: "乌镇青赛2021|北国剧社作品",
+      type: "先锋话剧",
+      duration: "30",
+    },
+    { name: "民国往事", from: "欢乐集结号作品", type: "小品", duration: "15" },
+    {
+      name: "恋爱的犀牛",
+      from: "廖一梅作品（节选）",
+      type: "先锋|爱情",
+      duration: "30",
+    },
+  ],
 ];
 
 export default scripts;
