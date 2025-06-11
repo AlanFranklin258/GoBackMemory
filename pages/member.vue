@@ -21,6 +21,7 @@
           v-else
           :members_per_group="(members_per_group as any).members"
           :groupname="(members_per_group as any).group"
+          :class="((members_per_group as any).type === 1 ? 'mt' : '')"
         ></MemberGroup>
       </div>
     </div>
@@ -29,6 +30,7 @@
       v-model="value"
       placeholder="第一届成员"
       style="width: 15vh"
+      v-on:change="(value:any)=>handleChange(value)"
     >
       <el-option
         v-for="item in options"
@@ -41,13 +43,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import members from "~/assets/members";
 import TeacherCard from "~/components/TeacherCard.vue";
 import MemberGroup from "~/components/MemberGroup.vue";
 import ManagerGroup from "~/components/ManagerGroup.vue";
 
-const value = ref("1");
+const value = ref("0");
 
 const options = [
   {
@@ -95,6 +97,19 @@ const options = [
     label: "第十届成员",
   },
 ];
+
+onMounted(() => {
+  let generation = localStorage.getItem("generation");
+  if (generation) {
+    value.value = generation;
+  } else {
+    localStorage.setItem("generation", "0");
+  }
+});
+const handleChange = (value: string) => {
+  console.log(value);
+  localStorage.setItem("generation", value);
+};
 </script>
 
 <style lang="less" scoped>
@@ -131,5 +146,8 @@ const options = [
       margin-left: 5%;
     }
   }
+}
+.mt {
+  margin-top: 3vh;
 }
 </style>

@@ -260,12 +260,12 @@ const scripts = [
       type: "先锋话剧",
       duration: "30",
     },
-    { name: "民国往事", from: "欢乐集结号作品", type: "小品", duration: "15" },
+    { name: "民国往事", from: "欢乐集结号作品", type: "小品", duration: "20" },
     {
       name: "恋爱的犀牛",
       from: "廖一梅作品（节选）",
       type: "先锋|爱情",
-      duration: "30",
+      duration: "50",
     },
   ],
 ];

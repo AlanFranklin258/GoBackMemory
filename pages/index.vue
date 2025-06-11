@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import GobackBanner from "~/components/GobackBanner.vue";
 import { informs, topInforms } from "~/assets/informs";
 export default {
   name: "Index",

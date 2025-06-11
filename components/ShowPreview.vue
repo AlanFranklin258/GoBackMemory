@@ -42,10 +42,11 @@ onMounted(() => {
 
 <style lang="less" scoped>
 .showpreview {
-  position: absolute;
-  width: 100%;
+  position: fixed;
+  width: 100vw;
   height: 100vh;
   top: 0;
+  left: 0;
   z-index: 99;
   background-color: rgba(0, 0, 0, 1);
   .exit {
@@ -88,6 +89,7 @@ onMounted(() => {
     .text {
       font-size: 1.5vh;
       text-indent: 3vh;
+      text-align: justify;
     }
     .image {
       width: 90%;

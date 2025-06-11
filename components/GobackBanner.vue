@@ -19,6 +19,7 @@ import { img_prefix } from "~/assets/constants";
 import { ref, onMounted } from "vue";
 const dynamicHeight = ref("");
 const banners = [
+  "/banners/banner_xiniu.webp",
   "/banners/banner_taolesi.webp",
   "/banners/banner_xiyou.webp",
   "/banners/banner_groupphoto9.webp",
@@ -122,5 +123,8 @@ onMounted(() => {
     100% 100%,
     100% 0
   );
+}
+::v-deep ul.el-carousel__indicators {
+  display: none;
 }
 </style>

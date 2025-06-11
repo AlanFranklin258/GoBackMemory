@@ -74,4 +74,9 @@ export default [
     date: "2024年12月",
     statement: "",
   },
+  {
+    name: "告白之夜2025·春",
+    date: "2025年6月",
+    statement: "",
+  },
 ];

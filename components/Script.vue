@@ -34,7 +34,7 @@ import { get_year } from "~/assets/utils";
 
 <style lang="less" scoped>
 .script {
-  width: 95%;
+  width: 100%;
   margin: auto;
   font-size: 1.2vh;
   display: flex;
