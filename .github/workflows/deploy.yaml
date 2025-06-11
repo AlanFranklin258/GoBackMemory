@@ -17,11 +17,12 @@ jobs:
       - run: npm install
       - name: Debug List files
         run: ls -R /home/runner/work/GoBackMemory/GoBackMemory/components
-      - run: npm run generate
+      - name: Generate Static Files
+        run: npm run generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: .output/GoBackMemory
   # Deployment job
   deploy:
     # Add a dependency to the build job
@@ -40,5 +41,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          folder: .output/public
