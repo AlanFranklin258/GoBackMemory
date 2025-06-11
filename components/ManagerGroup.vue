@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import ManagerCard from "./ManagerCard.vue";
+import ManagerCard from "~/components/ManagerCard.vue";
 defineProps<{ managers: any }>();
 </script>
 

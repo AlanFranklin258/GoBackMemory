@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import ShowCard from "./ShowCard.vue";
+import ShowCard from "~/components/ShowCard.vue";
 import { get_year } from "~/assets/utils";
 import shows from "~/assets/shows";
 const props = defineProps<{
