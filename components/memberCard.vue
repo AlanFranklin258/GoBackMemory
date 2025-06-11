@@ -195,4 +195,5 @@ const filteredDuty = ref(props.member.duty.filter((d: number) => d < 10));
     box-shadow: 0 0 1.5rem 0 peru;
   }
 }
+
 </style>
