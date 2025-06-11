@@ -25,9 +25,9 @@ export default defineNuxtConfig({
     baseURL: "/GoBackMemory/",
   },
   modules: ["@element-plus/nuxt", "@nuxtjs/tailwindcss"],
-  nitro: {
-    output: {
-      publicDir: ".output/GoBackMemory",
-    },
-  },
+  // nitro: {
+  //   output: {
+  //     publicDir: ".output/GoBackMemory",
+  //   },
+  // },
 });
