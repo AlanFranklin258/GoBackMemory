@@ -73,3 +73,9 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+# 图片：统一使用 webp 格式
+
+- banner：固定分辨率 3000\*1000
+- shows：分辨率长宽都不得超过 1080
+- members：固定分辨率 300\*400

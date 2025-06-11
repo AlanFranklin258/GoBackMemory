@@ -1,70 +1,57 @@
 <template>
-  <div :class="'membercard type-' + member.duty[0]">
-    <img
-      class="avatar"
-      :src="
-        img_prefix +
-        (member.avatar !== '' ? member.avatar : '/members/default_member.webp')
-      "
-    />
-    <div class="mark">{{ member.mark }}</div>
-    <div v-if="filteredDuty && filteredDuty.length > 0" class="duty">
-      <div
-        v-for="duty in filteredDuty"
-        class="badge"
-        :style="{
-          color: duty_badges[duty].badgeColor,
-          background: duty_badges[duty].badgeBgColor,
-        }"
-      >
-        {{ duty_badges[duty].label }}
-      </div>
+  <div :class="'managercard type-' + manager.duty[0]">
+    <img class="avatar" :src="img_prefix + manager.avatar" />
+    <div class="mark">
+      <div>{{ manager.mark }}</div>
     </div>
-    <div v-if="member.word" class="popup">
+    <div v-if="manager.word" class="popup">
       <div class="carrot"></div>
-      <div class="content">{{ member.word }}</div>
+      <div class="content">{{ manager.word }}</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { img_prefix } from "~/assets/constants";
-import { duty_badges } from "~/assets/constants";
-import { ref } from "vue";
 const props = defineProps<{
-  member: any;
+  manager: any;
 }>();
-
-const filteredDuty = ref(props.member.duty.filter((d: number) => d < 10));
 </script>
 
 <style scoped lang="less">
-.membercard {
+.managercard {
   flex-shrink: 0;
-  width: 12vh;
-  height: 16vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  border-radius: 0.5vh;
-  margin-right: 1vh;
+  border-radius: 50%;
   .avatar {
     width: 90%;
     height: 90%;
+    border-radius: 50%;
+    margin: auto;
     object-fit: cover;
   }
   .mark {
-    width: 100%;
     position: absolute;
     bottom: 0;
-    background: black;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0% 50% 50%;
     color: white;
-    font-size: 1.2vh;
+    background-color: black;
     font-weight: bold;
     text-align: center;
-    border-radius: 0.5vh;
+    font-size: 1.2vh;
+    padding-bottom: 1vh;
+    clip-path: polygon(0 75%, 100% 75%, 100% 95%, 0 95%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   .popup {
     opacity: 0;
@@ -74,12 +61,12 @@ const filteredDuty = ref(props.member.duty.filter((d: number) => d < 10));
     width: 110%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     z-index: 99;
     .carrot {
       width: 1vh;
       height: 0.5vh;
-      margin-right: 2vh;
+      margin-left: 1vh;
       clip-path: polygon(0 100%, 50% 0, 100% 100%);
       background: white;
     }
@@ -92,25 +79,9 @@ const filteredDuty = ref(props.member.duty.filter((d: number) => d < 10));
       padding: 0.5vh;
     }
   }
-  .duty {
-    position: absolute;
-    bottom: 10%;
-    left: -2%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    .badge {
-      width: 3vh;
-      margin: 0.2vh 0;
-      font-size: 1vh;
-      text-indent: 0.2vh;
-      font-weight: bold;
-      clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
-    }
-  }
 }
 
-.membercard:hover {
+.managercard:hover {
   cursor: pointer;
   .popup {
     opacity: 1;
