@@ -19,7 +19,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./.output/GoBack
+          path: ./.output/GoBackMemory
   # Deployment job
   deploy:
     # Add a dependency to the build job
