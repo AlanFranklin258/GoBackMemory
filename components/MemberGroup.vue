@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import MemberCard from "~/components/MemberBCard.vue";
+import MemberCard from "~/components/MemberCard.vue";
 defineProps<{
   members_per_group: any;
   groupname: string;
