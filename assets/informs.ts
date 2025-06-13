@@ -2,8 +2,9 @@ export const topInforms = [
   {
     contents: [
       "网站迁移到新服务器，暂时通过IP访问：http://120.24.21.171/GoBack",
+      "网站同时也在github pages部署，国内可访问：https://moonalf.github.io/GoBack/",
     ],
-    date: "2024.09.28",
+    date: "2025.06.13",
   },
   {
     contents: [
