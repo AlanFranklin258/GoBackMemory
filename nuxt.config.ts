@@ -22,12 +22,12 @@ export default defineNuxtConfig({
       ],
       // viewportfit:'cover',
     },
-    baseURL: "/GoBackMemory/",
+    baseURL: "/GoBack/",
   },
   modules: ["@element-plus/nuxt", "@nuxtjs/tailwindcss"],
   nitro: {
     output: {
-      publicDir: ".output/GoBackMemory",
+      publicDir: ".output/GoBack",
     },
   },
 });
