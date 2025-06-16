@@ -95,6 +95,17 @@ onMounted(() => {
   margin: auto;
   position: relative;
 }
+.el-menu.nav-menu /deep/ .el-menu-item {
+  height: 6vh !important;
+  line-height: 6vh !important;
+  padding: 0 !important;
+  width: 20vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .el-menu.nav-menu {
   width: 100%;
   height: 6vh;
@@ -117,7 +128,8 @@ onMounted(() => {
 .main-content {
   z-index: 0;
   width: 100%;
-  height: 79vh;
+  height: 85vh;
+  padding-bottom: 8vh;
   margin: 0 auto;
   // border: 1px black solid;
   overflow-y: scroll;
@@ -129,5 +141,4 @@ onMounted(() => {
 .main-content::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
-
 </style>
