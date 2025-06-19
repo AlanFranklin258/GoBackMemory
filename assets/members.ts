@@ -3129,6 +3129,38 @@ const members = [
       ],
     },
   ],
+  [
+    {
+      type: 0,
+      group: "社团负责人",
+      members: [
+        {
+          mark: "考试题",
+          avatar: "/members/2025-2026/kongst.webp",
+          word: "",
+          duty: [10],
+        },
+        {
+          mark: "Evildoer",
+          avatar: "/members/2025-2026/wangh.webp",
+          word: "",
+          duty: [11],
+        },
+        {
+          mark: "霂子",
+          avatar: "/members/2025-2026/weimy.webp",
+          word: "",
+          duty: [11],
+        },
+        {
+          mark: "Fishpie",
+          avatar: "/members/2025-2026/wangjy.webp",
+          word: "",
+          duty: [11],
+        },
+      ],
+    },
+  ],
 ];
 
 export default members;
