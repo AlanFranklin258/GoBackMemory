@@ -1,6 +1,9 @@
 <template>
   <div class="producer_card">
-    <img :src="producer.avatar !== '' ? producer.avatar : '/members/default_member.webp'" alt="" />
+    <img
+      :src="prefix + (producer.avatar !== '' ? producer.avatar : 'members/default_member.webp')"
+      alt=""
+    />
     <div class="name_wrap">
       <div class="producer_character">{{ producer.character }}</div>
       <div class="producer_name">{{ producer.name }}</div>
@@ -13,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+const prefix = import.meta.env.BASE_URL
 const props = defineProps<{
   producer: any
 }>()

@@ -1,6 +1,6 @@
 <template>
   <div class="show_card" @click="showShowPreview">
-    <img :src="show.cover" alt="" />
+    <img :src="prefix + show.cover" alt="" />
     <div class="title_wrap">
       <div class="show_title">{{ show.title + (show.subtitle ? '——' + show.subtitle : '') }}</div>
     </div>
@@ -8,6 +8,7 @@
 </template>
 
 <script lang="ts" setup>
+const prefix = import.meta.env.BASE_URL
 const props = defineProps<{
   show: any
 }>()

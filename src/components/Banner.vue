@@ -6,27 +6,28 @@
       :key="'banner-' + banner"
       :id="'banner_' + index"
     >
-      <img :src="banner" alt="" />
+      <img :src="prefix + banner" alt="" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+const prefix = import.meta.env.BASE_URL
 const banners = [
-  '/banners/banner_xiniu.webp',
-  '/banners/banner_taolesi.webp',
-  '/banners/banner_xiyou.webp',
-  '/banners/banner_groupphoto9.webp',
+  'banners/banner_xiniu.webp',
+  'banners/banner_taolesi.webp',
+  'banners/banner_xiyou.webp',
+  'banners/banner_groupphoto9.webp',
   // "banners/banner_gb2024.webp",
-  '/banners/banner_window.webp',
+  'banners/banner_window.webp',
   // "banners/banner_gb20232.webp",
-  '/banners/banner_snake.webp',
+  'banners/banner_snake.webp',
   // "banners/banner_gb2023.webp",
-  '/banners/banner_crane.webp',
-  '/banners/banner_nieer.webp',
-  '/banners/banner_mountain.webp',
-  '/banners/banner_wulong.webp',
-  '/banners/banner_taohuayuan.webp',
+  'banners/banner_crane.webp',
+  'banners/banner_nieer.webp',
+  'banners/banner_mountain.webp',
+  'banners/banner_wulong.webp',
+  'banners/banner_taohuayuan.webp',
   // "banners/banner_f104.webp",
 ]
 import { onMounted, onUnmounted } from 'vue'

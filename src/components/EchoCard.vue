@@ -1,9 +1,9 @@
 <template>
   <div class="echo_card" @click="showEchoPreview">
-    <img :src="echo.cover" alt="" />
+    <img :src="prefix + echo.cover" alt="" />
     <div class="echo_title">{{ echo.title }}</div>
     <div class="echo_info">
-      <img :src="echo.avatar" alt="" />
+      <img :src="prefix + echo.avatar" alt="" />
       <div>{{ echo.author }}</div>
       <div class="echo_modified">{{ echo.modified }}</div>
     </div>
@@ -11,6 +11,7 @@
 </template>
 
 <script lang="ts" setup>
+const prefix = import.meta.env.BASE_URL
 const props = defineProps<{
   echo: any
 }>()

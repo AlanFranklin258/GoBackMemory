@@ -1,6 +1,9 @@
 <template>
   <div class="cast_card">
-    <img :src="cast.avatar !== '' ? cast.avatar : '/members/default_member.webp'" alt="" />
+    <img
+      :src="prefix + (cast.avatar !== '' ? cast.avatar : 'members/default_member.webp')"
+      alt=""
+    />
     <div :class="'name_wrap ' + cast.side">
       <div class="cast_info">{{ cast.name + '  饰  ' + cast.character }}</div>
     </div>
@@ -12,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+const prefix = import.meta.env.BASE_URL
 const props = defineProps<{
   cast: any
 }>()

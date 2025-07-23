@@ -8,7 +8,7 @@
         :key="'teacher-' + index"
         @click="selectTeacher(index)"
       >
-        <img :src="teacher.avatar" alt="" />
+        <img :src="prefix + teacher.avatar" alt="" />
       </div>
     </div>
     <div class="info_area">
@@ -26,6 +26,7 @@
 </template>
 
 <script lang="ts" setup>
+const prefix = import.meta.env.BASE_URL
 import teachers from '@/utils/teachers'
 import { onMounted, ref } from 'vue'
 const selected = ref(0)

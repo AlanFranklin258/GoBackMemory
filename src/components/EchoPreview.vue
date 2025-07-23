@@ -4,10 +4,10 @@
       <div class="close_btn"></div>
     </div>
     <div class="echo_info">
-      <img :src="echo?.avatar ?? ''" alt="" />
+      <img :src="prefix + (echo?.avatar ?? '')" alt="" />
       <div>{{ echo?.author ?? '' }}</div>
     </div>
-    <img :src="echo?.cover ?? ''" alt="" />
+    <img :src="prefix + (echo?.cover ?? '')" alt="" />
     <div class="echo_title">{{ echo?.title ?? '' }}</div>
     <div class="echo_content" v-for="content in echo?.contents ?? []">{{ content ?? '' }}</div>
     <div class="echo_tag">{{ '#' + (echo?.tags ?? []).join(' #') }}</div>
@@ -16,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+const prefix = import.meta.env.BASE_URL
 const props = defineProps<{
   echo: any
 }>()

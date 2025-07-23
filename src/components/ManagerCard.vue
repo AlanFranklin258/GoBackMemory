@@ -1,6 +1,9 @@
 <template>
   <div class="manager_card">
-    <img :src="manager.avatar !== '' ? manager.avatar : '/members/default_member.webp'" alt="" />
+    <img
+      :src="prefix + (manager.avatar !== '' ? manager.avatar : 'members/default_member.webp')"
+      alt=""
+    />
     <div class="name_wrap">
       <div class="manager_name">{{ manager.name }}</div>
     </div>
@@ -12,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+const prefix = import.meta.env.BASE_URL
 const props = defineProps<{
   manager: any
 }>()

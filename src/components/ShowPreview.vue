@@ -4,7 +4,7 @@
       <div class="close_btn"></div>
     </div>
     <div class="intro_bg">
-      <img :src="show?.introbg ?? ''" alt="" />
+      <img :src="prefix + (show?.introbg ?? '')" alt="" />
       <div class="shadow"></div>
     </div>
     <div class="show_title">{{ show?.title ?? '' }}</div>
@@ -51,12 +51,13 @@
     </div>
     <div class="sub_title" v-if="show?.photos && show?.photos.length">现场回顾</div>
     <div class="show_photo" v-for="(photo, index) in show?.photos ?? []" :key="'photo-' + index">
-      <img :src="photo" alt="" />
+      <img :src="prefix + photo" alt="" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+const prefix = import.meta.env.BASE_URL
 import ProducerCard from './ProducerCard.vue'
 import CastCard from './CastCard.vue'
 import { devideArr } from '@/utils/methods'
