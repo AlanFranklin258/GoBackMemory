@@ -1,0 +1,99 @@
+<template>
+  <div class="footer_nav">
+    <div
+      :class="'nav_item ' + (item.selected === true ? 'selected' : '')"
+      v-for="(item, index) in nav"
+      :key="'navitem' + index"
+    >
+      <div @click="item.click2router">{{ item.title }}</div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+const router = useRouter()
+const route = useRoute()
+const nav = ref([
+  {
+    title: '主页',
+    name: 'home',
+    selected: false,
+    click2router: () => {
+      router.replace('/')
+    },
+  },
+  {
+    title: '关于',
+    name: 'about',
+    selected: false,
+    click2router: () => {
+      router.replace('about')
+    },
+  },
+  {
+    title: '魅影',
+    name: 'showus',
+    selected: false,
+    click2router: () => {
+      router.replace('showus')
+    },
+  },
+  {
+    title: '回响',
+    name: 'echo',
+    selected: false,
+    click2router: () => {
+      router.replace('echo')
+    },
+  },
+])
+import { watch } from 'vue'
+watch(
+  () => route,
+  (newVal, oldVal) => {
+    nav.value.map((item) => {
+      item.selected = false
+      if (item.name === newVal.name) {
+        item.selected = true
+      }
+      return item
+    })
+  },
+  { deep: true, immediate: true },
+)
+</script>
+
+<style lang="less" scoped>
+.footer_nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  width: min(100vw, 50vh);
+  height: 7vh;
+  background-color: rgba(240, 255, 255, 1);
+  .nav_item {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: rgba(0, 83, 117, 1);
+    font-size: 2vh;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    &.selected {
+      background-color: rgba(0, 83, 117, 1);
+      color: rgba(240, 255, 255, 1);
+      transform: scale(1.04);
+      font-weight: 900;
+    }
+  }
+}
+</style>
