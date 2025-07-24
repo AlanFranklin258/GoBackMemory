@@ -1,5 +1,6 @@
 <template>
   <div class="showus">
+    <LoadingLayer id="loadingLayer"></LoadingLayer>
     <div
       class="showus_block"
       v-for="(showusPerYear, idx) in showus"
@@ -48,7 +49,7 @@ const showShowPreview = (idx: number, idy: number) => {
   setTimeout(() => {
     const ShowPreview = document.getElementById('ShowPreview')
     ShowPreview?.classList.add('show')
-  }, 200)
+  }, 500)
 }
 const closeShowPreview = () => {
   const ShowPreview = document.getElementById('ShowPreview')
@@ -73,6 +74,14 @@ onActivated(() => {
       clearInterval(interval)
     }
   }, 500)
+})
+import LoadingLayer from '@/components/LoadingLayer.vue'
+import { onMounted } from 'vue'
+onMounted(() => {
+  setTimeout(() => {
+    const loadingLayer = document.getElementById('loadingLayer')
+    loadingLayer?.classList.add('fade')
+  }, 2000)
 })
 </script>
 
@@ -104,7 +113,7 @@ onActivated(() => {
     .year_wrap {
       position: relative;
       width: 100%;
-      margin: 2vh 0;
+      margin: 3vh 0;
       border-top: white 0.2vh solid;
       .year {
         position: absolute;

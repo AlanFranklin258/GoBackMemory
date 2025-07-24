@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <LoadingLayer id="loadingLayer"></LoadingLayer>
     <Banner></Banner>
     <div class="home_container">
       <div class="home_text">
@@ -16,6 +17,14 @@
 
 <script lang="ts" setup>
 import Banner from '@/components/Banner.vue'
+import LoadingLayer from '@/components/LoadingLayer.vue'
+import { onMounted } from 'vue'
+onMounted(() => {
+  setTimeout(() => {
+    const loadingLayer = document.getElementById('loadingLayer')
+    loadingLayer?.classList.add('fade')
+  }, 2000)
+})
 </script>
 
 <style lang="less" scoped>

@@ -4,20 +4,27 @@
       :class="'nav_item ' + (item.selected === true ? 'selected' : '')"
       v-for="(item, index) in nav"
       :key="'navitem' + index"
+      @click="item.click2router"
     >
-      <div @click="item.click2router">{{ item.title }}</div>
+      <div class="nav_icon">
+        <img
+          :src="prefix + 'common/' + item.name + '_' + (item.selected ? 'light' : 'dark') + '.png'"
+        />
+      </div>
+      <div>{{ item.title }}</div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+const prefix = import.meta.env.BASE_URL
 import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 const nav = ref([
   {
-    title: '主页',
+    title: '如初',
     name: 'home',
     selected: false,
     click2router: () => {
@@ -25,7 +32,7 @@ const nav = ref([
     },
   },
   {
-    title: '关于',
+    title: '如晤',
     name: 'about',
     selected: false,
     click2router: () => {
@@ -33,7 +40,7 @@ const nav = ref([
     },
   },
   {
-    title: '魅影',
+    title: '如梦',
     name: 'showus',
     selected: false,
     click2router: () => {
@@ -41,7 +48,7 @@ const nav = ref([
     },
   },
   {
-    title: '回响',
+    title: '如沐',
     name: 'echo',
     selected: false,
     click2router: () => {
@@ -74,7 +81,7 @@ watch(
   position: fixed;
   bottom: 0;
   width: min(100vw, 50vh);
-  height: 7vh;
+  height: 6vh;
   background-color: rgba(240, 255, 255, 1);
   .nav_item {
     flex: 1;
@@ -88,6 +95,14 @@ watch(
     font-size: 2vh;
     font-weight: 600;
     transition: all 0.2s ease-in-out;
+    .nav_icon {
+      height: 50%;
+      margin-right: 0.5vh;
+      img {
+        height: 100%;
+        object-fit: contain;
+      }
+    }
     &.selected {
       background-color: rgba(0, 83, 117, 1);
       color: rgba(240, 255, 255, 1);

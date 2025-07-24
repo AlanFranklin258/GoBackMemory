@@ -1,5 +1,6 @@
 <template>
   <div class="echo">
+    <LoadingLayer id="loadingLayer"></LoadingLayer>
     <div class="echo_left">
       <EchoCard
         v-for="(echo, index) in echosGroup[0]"
@@ -43,6 +44,14 @@ const closeEchoPreview = () => {
   const EchoPreview = document.getElementById('EchoPreview')
   EchoPreview?.classList.remove('show')
 }
+import LoadingLayer from '@/components/LoadingLayer.vue'
+import { onMounted } from 'vue'
+onMounted(() => {
+  setTimeout(() => {
+    const loadingLayer = document.getElementById('loadingLayer')
+    loadingLayer?.classList.add('fade')
+  }, 2000)
+})
 </script>
 
 <style lang="less" scoped>

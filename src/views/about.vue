@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <LoadingLayer id="loadingLayer"></LoadingLayer>
     <TeacherArea></TeacherArea>
     <div class="title">“爱的回归线”</div>
     <HistoryLine></HistoryLine>
@@ -13,6 +14,14 @@
 import HistoryLine from '@/components/HistoryLine.vue'
 import ScriptTable from '@/components/ScriptTable.vue'
 import TeacherArea from '@/components/TeacherArea.vue'
+import LoadingLayer from '@/components/LoadingLayer.vue'
+import { onMounted } from 'vue'
+onMounted(() => {
+  setTimeout(() => {
+    const loadingLayer = document.getElementById('loadingLayer')
+    loadingLayer?.classList.add('fade')
+  }, 2000)
+})
 </script>
 
 <style lang="less" scoped>

@@ -1,5 +1,6 @@
 <template>
   <div class="manager_card">
+    <div :class="'background type' + type"></div>
     <img
       :src="prefix + (manager.avatar !== '' ? manager.avatar : 'members/default_member.webp')"
       alt=""
@@ -18,6 +19,7 @@
 const prefix = import.meta.env.BASE_URL
 const props = defineProps<{
   manager: any
+  type: number
 }>()
 </script>
 
@@ -28,6 +30,22 @@ const props = defineProps<{
   &:hover {
     .word_wrap {
       opacity: 1;
+    }
+  }
+
+  .background {
+    position: absolute;
+    width: 106%;
+    height: 106%;
+    top: -3%;
+    left: -3%;
+    z-index: -1;
+    border-radius: 50%;
+    &.type0 {
+      background: linear-gradient(135deg, gold 0, pink 70%);
+    }
+    &.type1 {
+      background: linear-gradient(135deg, black 30%, pink 100%);
     }
   }
 

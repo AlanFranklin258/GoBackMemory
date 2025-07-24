@@ -26,6 +26,11 @@ const showShowPreview = () => {
   margin: 0 1vh;
   border-radius: 1vh;
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
+
+  &:active {
+    transform: translateY(-2vh);
+  }
 
   img {
     width: 100%;
