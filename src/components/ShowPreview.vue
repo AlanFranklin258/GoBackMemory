@@ -16,9 +16,14 @@
     >
       {{ content }}
     </div>
-    <div class="show_video" v-for="(video, index) in show?.videos ?? []" :key="'video-' + index">
+    <div
+      class="show_video"
+      v-for="(video, index) in show?.videos ?? []"
+      :key="'video-' + index"
+      @click="linkVideo(video.url)"
+    >
       <div class="play_icon"><div></div></div>
-      <a :href="video.url">{{ video?.caption ?? '' }}</a>
+      <div class="link">{{ video?.caption ?? '' }}</div>
     </div>
     <div class="sub_title">制作团队</div>
     <div class="producer_group" v-for="(group, idx) in producerGroup" :key="'pdgroup-' + idx">
@@ -72,6 +77,9 @@ import { defineEmits } from 'vue'
 const emit = defineEmits(['closeShowPreview'])
 const closeShowPreview = () => {
   emit('closeShowPreview')
+}
+const linkVideo = (url: string) => {
+  window.location.href = url
 }
 watch(
   () => props.show,
@@ -229,7 +237,7 @@ watch(
         background-color: wheat;
       }
     }
-    a {
+    .link {
       color: wheat;
       text-decoration: underline;
     }

@@ -42,10 +42,10 @@ onMounted(() => {
     align-items: flex-start;
     margin-left: 2vh;
     color: rgba(0, 83, 117, 1);
-    font-weight: 600;
+    font-weight: 900;
     font-style: italic;
     .header_text_cn {
-      font-size: 2.5vh;
+      font-size: 3vh;
     }
     .header_text_en {
       font-size: 2vh;

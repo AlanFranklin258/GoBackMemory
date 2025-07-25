@@ -1,6 +1,7 @@
 <template>
   <div class="loading_layer">
-    <div class="loading_text">Loading...</div>
+    <div class="loading_text">生活欠你的</div>
+    <div class="loading_text">话剧还给你</div>
     <div class="loading_shadow"></div>
   </div>
 </template>
@@ -27,10 +28,12 @@
   }
 
   .loading_text {
+    position: relative;
     font-size: 3vh;
     font-weight: 900;
     color: white;
-    animation: textani 1s ease-in-out infinite;
+    font-style: italic;
+    text-shadow: 0.5vh -0.5vh 0.5vh rgba(0, 0, 0, 1);
   }
 
   @keyframes textani {
