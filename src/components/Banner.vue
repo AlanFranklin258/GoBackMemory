@@ -1,7 +1,7 @@
 <template>
   <div class="banner" id="banner">
     <div
-      class="banner_wrap goback_mark"
+      class="banner_wrap ready goback_mark"
       v-for="(banner, index) in banners"
       :key="'banner-' + banner"
       :id="'banner_' + index"
@@ -30,22 +30,31 @@ const banners = [
   'banners/banner_taohuayuan.webp',
   // "banners/banner_f104.webp",
 ]
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, onActivated, onDeactivated } from 'vue'
 let interval: any = null
-onMounted(() => {
-  let index = 0
+let index = 0
+onActivated(() => {
   const bannerItem = document.getElementById('banner_' + index)
+  bannerItem?.classList.remove('ready')
   bannerItem?.classList.add('appear')
   interval = setInterval(() => {
-    let lastIndex = index % banners.length
-    const bannerLastItem = document.getElementById('banner_' + lastIndex)
-    bannerLastItem?.classList.remove('appear')
+    console.log(index, (index - 1 + banners.length) % banners.length, (index + 1) % banners.length)
+    const readyItem = document.getElementById(
+      'banner_' + ((index - 1 + banners.length) % banners.length),
+    )
+    readyItem?.classList.remove('fade')
+    readyItem?.classList.add('ready')
+    const fadeItem = document.getElementById('banner_' + (index % banners.length))
+    fadeItem?.classList.remove('appear')
+    fadeItem?.classList.add('fade')
     index = (index + 1) % banners.length
-    const bannerItem = document.getElementById('banner_' + index)
-    bannerItem?.classList.add('appear')
+    const appearItem = document.getElementById('banner_' + index)
+    appearItem?.classList.remove('ready')
+    appearItem?.classList.add('appear')
   }, 3000)
 })
-onUnmounted(() => {
+
+onDeactivated(() => {
   clearInterval(interval)
 })
 </script>
@@ -62,17 +71,24 @@ onUnmounted(() => {
   .banner_wrap {
     position: absolute;
     top: 0;
-    left: 0;
     width: min(100vw, 50vh);
     height: 100%;
-    transition: all 0.5s ease-in-out;
-    opacity: 0;
+    transition: left 0.5s ease-in-out;
     img {
       height: 100%;
       object-fit: contain;
     }
+    &.ready {
+      left: calc(1 * min(100vw, 50vh));
+      opacity: 0;
+    }
     &.appear {
-      opacity: 1 !important;
+      left: 0;
+      opacity: 1;
+    }
+    &.fade {
+      left: calc(-1 * min(100vw, 50vh));
+      opacity: 1;
     }
   }
 }

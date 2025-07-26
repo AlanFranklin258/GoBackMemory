@@ -13,7 +13,4 @@ export default defineConfig({
     },
   },
   base: process.env.NODE_ENV === 'production' ? '/GoBack/' : '/',
-  define: {
-    __BASE_URL__: JSON.stringify(process.env.NODE_ENV === 'production' ? '/GoBack/' : '/'),
-  },
 })
